@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ANALYZE</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+
+
+
+ .myButton{
+  border-radius: 18px;
+  margin-top:3vh;
+}
+.container {
+  height: 100vh;
+  position: relative;
+  border-right: 3px solid black;
+}
+ .myStyle{
+      border-radius: 18px;
+     background: none;
+     size:1.25rem;
+     height: 100%;
+     border-color: black ;
+     border-style: solid;
+     color:black;
+     font-family:Comic Sans MS, cursive, sans-serif;
+     font-weight:900 ;
+     padding: 7px;
+ }
+.centerrr{
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.centerrr1{
+  margin: 0;
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.centerrr2{
+  margin: 0;
+  position: absolute;
+  top: 60%;
+  left:50%;
+  font-family: cursive;
+  font-weight: bolder;
+  color: darkslategrey;
+  font-size: 2rem;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+   .center {
+  display: block;
+  border-radius: 50%;
+}
+body {
+  background-image: url("https://images.pexels.com/photos/1020320/pexels-photo-1020320.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  background-color: #cccccc;
+}
+
+    </style>
+
+</head>
+<body>
+
+<h1 style="font-family: cursive; font-size: 48px;color: darkred" align="center">User Tweet Polarity</h1>
+
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-sm-4 container" >
+     <form method="post" class="centerrr">
+                   {% csrf_token %}
+         <img src="http://clipart-library.com/images_k/twitter-bird-transparent-background/twitter-bird-transparent-background-22.png" style="width:196px;height:196px;margin-bottom:5vh">
+
+         <input class="myStyle" name="userid" type="text" placeholder="enter twitter id" required  size="25" autofocus ><br>
+         <button type="submit"  class="btn btn-primary myButton ">analyze</button>
+
+     </form>
+        <div style="top:75%;width:60vh;position: absolute">
+            <p>
+               NOTE : Due to twitter API policy only the past 100 tweets are analysed.Correctness of the results cant be guaranteed.
+            </p>
+        </div>
+    </div>
+    <div class="col-sm-8 container" style="border-right: 0px solid black;">
+        <div class="centerrr1">
+          <img src={{ p }} style="width:196px;height:196px;" class="center">
+          <p style="font-family: cursive;font-size:large">{{ name }}</p>
+          <p style="font-family: cursive;font-size:large">{{ verif }}</p>
+
+        </div>
+        <div class="centerrr2">
+            <p>Positivity Percentage :{{   x.pos }}</p>
+            <p>Neutrality Percentage :{{ x.neu }}</p>
+            <p>Negativity Percentage :{{ x.neg }}</p>
+            <p>Total Polarity :{{   x.summ }}</p>
+
+        </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
